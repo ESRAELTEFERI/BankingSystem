@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build all",
+      "type": "shell",
+      "command": "g++",
+      "args": ["main.cpp", "Banking_system.cpp", "-o", "bankApp"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$gcc"],
+      "detail": "Compile main.cpp and Banking_system.cpp"
+    }
+  ]
+}
