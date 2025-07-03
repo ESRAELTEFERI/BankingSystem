@@ -1,65 +1,80 @@
 #include "Banking_system.h"
 
 int main() {
-    Banking_system bank;
-    bank.intro(); // Show welcome screen
+    // Set console properties
+    system("title MIT Banking System");
+    system("mode con: cols=90 lines=30");
+    setColor(TEXT_COLOR, BG_COLOR);
+    clearScreen();
 
-    int choice;
+    intro();
+
+    char ch;
     int num;
 
     do {
-        cout << "\n\n\tMAIN MENU";
-        cout << "\n\n\t01. NEW ACCOUNT";
-        cout << "\n\n\t02. DEPOSIT AMOUNT";
-        cout << "\n\n\t03. WITHDRAW AMOUNT";
-        cout << "\n\n\t04. BALANCE ENQUIRY";
-        cout << "\n\n\t05. ALL ACCOUNT HOLDER LIST";
-        cout << "\n\n\t06. CLOSE AN ACCOUNT";
-        cout << "\n\n\t07. MODIFY AN ACCOUNT";
-        cout << "\n\n\t08. EXIT";
-        cout << "\n\n\tSelect Your Option (1-8): ";
-        cin >> choice;
+        displayMainMenu();
+        cin >> ch;
 
-        switch(choice) {
-            case 1:
-                bank.write_account();
+        switch(ch) {
+            case '1':
+                write_account();
                 break;
-            case 2:
-                cout << "\n\n\tEnter The Account No.: ";
+            case '2':
+                printHeader("DEPOSIT AMOUNT");
+                setColor(INPUT_COLOR, BG_COLOR);
+                cout << "\n\tEnter Account No. : ";
                 cin >> num;
-                bank.deposite_withdraw(num, 1);
+                deposit_withdraw(num, 1);
                 break;
-            case 3:
-                cout << "\n\n\tEnter The Account No.: ";
+            case '3':
+                printHeader("WITHDRAW AMOUNT");
+                setColor(INPUT_COLOR, BG_COLOR);
+                cout << "\n\tEnter Account No. : ";
                 cin >> num;
-                bank.deposite_withdraw(num, 2);
+                deposit_withdraw(num, 2);
                 break;
-            case 4:
-                cout << "\n\n\tEnter The Account No.: ";
+            case '4':
+                printHeader("BALANCE ENQUIRY");
+                setColor(INPUT_COLOR, BG_COLOR);
+                cout << "\n\tEnter Account No. : ";
                 cin >> num;
-                bank.display_sp(num);
+                display_sp(num);
                 break;
-            case 5:
-                bank.display_all();
+            case '5':
+                display_all();
                 break;
-            case 6:
-                cout << "\n\n\tEnter The Account No.: ";
+            case '6':
+                printHeader("CLOSE ACCOUNT");
+                setColor(INPUT_COLOR, BG_COLOR);
+                cout << "\n\tEnter Account No. : ";
                 cin >> num;
-                bank.delete_account(num);
+                delete_account(num);
                 break;
-            case 7:
-                cout << "\n\n\tEnter The Account No.: ";
+            case '7':
+                printHeader("MODIFY ACCOUNT");
+                setColor(INPUT_COLOR, BG_COLOR);
+                cout << "\n\tEnter Account No. : ";
                 cin >> num;
-                bank.modify_account(num);
+                modify_account(num);
                 break;
-            case 8:
-                cout << "\n\n\tThanks for using our banking system!\n";
+            case '8':
+                printHeader("THANK YOU");
+                setColor(MENU_COLOR, BG_COLOR);
+                printCentered("Thanks for using MIT Banking System");
+                printCentered("Have a nice day!");
+                setColor(HEADER_COLOR, BG_COLOR);
+                cout << string(90, '=') << endl;
+                setColor(TEXT_COLOR, BG_COLOR);
+                cout << "\n\n";
                 break;
             default:
-                cout << "\aInvalid Option! Try again.";
+                setColor(ERROR_COLOR, BG_COLOR);
+                cout << "\a\n\tInvalid Option! Please try again...";
+                setColor(TEXT_COLOR, BG_COLOR);
+                pressAnyKey();
         }
-
-    } while (choice != 8);
+    } while(ch != '8');
 
     return 0;
 }

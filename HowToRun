@@ -1,0 +1,2 @@
+PS D:\Banking_System> g++ main.cpp Banking_system.cpp -o bank_app.exe
+PS D:\Banking_System> .\bank_app.exe
